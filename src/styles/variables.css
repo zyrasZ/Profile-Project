@@ -1,0 +1,32 @@
+/* 
+CSS Variables - Màu sắc chung cho toàn bộ project
+*/
+
+:root {
+  /* Primary Colors từ Figma */
+  --primary-color: #822979;
+  --secondary-color: #502A8C;
+  
+  /* Gradient */
+  --primary-gradient: linear-gradient(135deg, #822979 0%, #502A8C 100%);
+  
+  /* Text Colors */
+  --text-primary: #ffffff;
+  --text-secondary: #A1A1AA;
+  
+  /* Background Colors */
+  --bg-primary: #16111D;
+  --bg-transparent: transparent;
+  
+  /* Shadow */
+  --shadow-primary: rgba(130, 41, 121, 0.4);
+  --shadow-gradient: 0 20px 60px rgba(130, 41, 121, 0.3), 0 40px 80px rgba(80, 42, 140, 0.2);
+  
+  /* Border */
+  --border-primary: 2px solid;
+  --border-gradient: linear-gradient(135deg, #822979 0%, #502A8C 100%) 1;
+  
+  /* Transitions */
+  --transition-fast: 0.3s ease;
+  --transition-medium: 0.4s ease;
+}

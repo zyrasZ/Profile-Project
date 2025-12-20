@@ -1,0 +1,133 @@
+/* 
+CSS Modules: Class names sẽ được tự động tạo unique
+Ví dụ: .about → .About_about__abc123
+*/
+
+.about {
+  padding: 80px 0;
+  margin-top: 400px;
+  background-color: var(--bg-transparent);
+  position: relative;
+}
+
+/* 7 đường line dọc cho about */
+.about::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    linear-gradient(90deg, transparent calc(12.5% - 0.5px), rgba(255, 255, 255, 0.08) 12.5%, rgba(255, 255, 255, 0.08) calc(12.5% + 0.5px), transparent calc(12.5% + 0.5px)),
+    linear-gradient(90deg, transparent calc(25% - 0.5px), rgba(255, 255, 255, 0.08) 25%, rgba(255, 255, 255, 0.08) calc(25% + 0.5px), transparent calc(25% + 0.5px)),
+    linear-gradient(90deg, transparent calc(37.5% - 0.5px), rgba(255, 255, 255, 0.08) 37.5%, rgba(255, 255, 255, 0.08) calc(37.5% + 0.5px), transparent calc(37.5% + 0.5px)),
+    linear-gradient(90deg, transparent calc(50% - 0.5px), rgba(255, 255, 255, 0.08) 50%, rgba(255, 255, 255, 0.08) calc(50% + 0.5px), transparent calc(50% + 0.5px)),
+    linear-gradient(90deg, transparent calc(62.5% - 0.5px), rgba(255, 255, 255, 0.08) 62.5%, rgba(255, 255, 255, 0.08) calc(62.5% + 0.5px), transparent calc(62.5% + 0.5px)),
+    linear-gradient(90deg, transparent calc(75% - 0.5px), rgba(255, 255, 255, 0.08) 75%, rgba(255, 255, 255, 0.08) calc(75% + 0.5px), transparent calc(75% + 0.5px)),
+    linear-gradient(90deg, transparent calc(87.5% - 0.5px), rgba(255, 255, 255, 0.08) 87.5%, rgba(255, 255, 255, 0.08) calc(87.5% + 0.5px), transparent calc(87.5% + 0.5px));
+  pointer-events: none;
+  z-index: 0;
+}
+
+.aboutContainer {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 32px; /* 2rem = 32px */
+  position: relative;
+  z-index: 1;
+}
+
+.aboutContent {
+  display: grid;
+  grid-template-columns: 40% 60%;
+  gap: 64px; /* 4rem = 64px */
+  align-items: center;
+}
+
+.aboutAvatar {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 15px;
+}
+
+.aboutTitle {
+  font-size: 40px; /* 2.5rem = 40px */
+  font-weight: 700;
+  margin-bottom: 32px; /* 2rem = 32px */
+  font-family: 'Bricolage Grotesque', sans-serif;
+  color: var(--text-primary);
+}
+
+.highlight {
+  color: var(--primary-color);
+}
+
+.aboutDescription {
+  font-size: 16px; /* 1rem = 16px */
+  line-height: 1.6;
+  color: var(--text-secondary);
+  margin-bottom: 48px; /* 3rem = 48px */
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+.biodataTitle {
+  font-size: 24px; /* 1.5rem = 24px */
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 24px; /* 1.5rem = 24px */
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+.biodataList {
+  display: flex;
+  flex-direction: column;
+  gap: 16px; /* 1rem = 16px */
+}
+
+.biodataItem {
+  display: grid;
+  grid-template-columns: 100px 20px 1fr;
+  gap: 8px; /* 0.5rem = 8px */
+  align-items: start;
+}
+
+.label {
+  color: var(--text-primary);
+  font-weight: 500;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+.colon {
+  color: var(--text-primary);
+}
+
+.value {
+  color: var(--text-secondary);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+@media (max-width: 768px) {
+  .aboutContent {
+    grid-template-columns: 1fr;
+    gap: 32px; /* 2rem = 32px */
+  }
+  
+  .aboutTitle {
+    font-size: 32px; /* 2rem = 32px */
+  }
+}
+/* Đường line ngang ở điểm bắt đầu 7 đường dọc */
+.about::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.08);
+  pointer-events: none;
+  z-index: 0;
+}

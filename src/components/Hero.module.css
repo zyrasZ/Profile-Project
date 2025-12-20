@@ -1,0 +1,137 @@
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding-top: 100px;
+  position: relative;
+}
+
+/* 7 đường line dọc cho hero */
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    linear-gradient(90deg, transparent calc(12.5% - 0.5px), rgba(255, 255, 255, 0.08) 12.5%, rgba(255, 255, 255, 0.08) calc(12.5% + 0.5px), transparent calc(12.5% + 0.5px)),
+    linear-gradient(90deg, transparent calc(25% - 0.5px), rgba(255, 255, 255, 0.08) 25%, rgba(255, 255, 255, 0.08) calc(25% + 0.5px), transparent calc(25% + 0.5px)),
+    linear-gradient(90deg, transparent calc(37.5% - 0.5px), rgba(255, 255, 255, 0.08) 37.5%, rgba(255, 255, 255, 0.08) calc(37.5% + 0.5px), transparent calc(37.5% + 0.5px)),
+    linear-gradient(90deg, transparent calc(50% - 0.5px), rgba(255, 255, 255, 0.08) 50%, rgba(255, 255, 255, 0.08) calc(50% + 0.5px), transparent calc(50% + 0.5px)),
+    linear-gradient(90deg, transparent calc(62.5% - 0.5px), rgba(255, 255, 255, 0.08) 62.5%, rgba(255, 255, 255, 0.08) calc(62.5% + 0.5px), transparent calc(62.5% + 0.5px)),
+    linear-gradient(90deg, transparent calc(75% - 0.5px), rgba(255, 255, 255, 0.08) 75%, rgba(255, 255, 255, 0.08) calc(75% + 0.5px), transparent calc(75% + 0.5px)),
+    linear-gradient(90deg, transparent calc(87.5% - 0.5px), rgba(255, 255, 255, 0.08) 87.5%, rgba(255, 255, 255, 0.08) calc(87.5% + 0.5px), transparent calc(87.5% + 0.5px));
+  pointer-events: none;
+  z-index: 0;
+}
+
+.heroContainer {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 32px; 
+  width: 100%;
+  position: relative;
+  z-index: 1;
+}
+
+.heroContent {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px; 
+  align-items: center;
+}
+
+.heroText {
+  display: flex;
+  flex-direction: column;
+}
+
+.greeting {
+  font-size: 19px; 
+  color: var(--text-primary);
+  margin-bottom: 16px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+.heroTitle {
+  font-size: 72px; 
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.1;
+  margin-bottom: 32px;
+  font-family: 'Bricolage Grotesque', sans-serif;
+}
+
+.heroDotsLine {
+  display: flex;
+  align-items: center;
+  gap: 16px; 
+  margin-bottom: 16px; 
+}
+
+.heroDots {
+  display: flex;
+  gap: 8px;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  background-color: var(--primary-color);
+  border-radius: 50%;
+}
+
+.heroSubtitle {
+  font-size: 21px; 
+  color: var(--text-primary);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  margin: 0;
+}
+
+.heroImage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.heroImage::before {
+  content: '';
+  position: absolute;
+ 
+  background: var(--primary-gradient);
+  border-radius: 0 0 250px 250px;
+  z-index: -1;
+  top: -50px;
+  right: -50px;
+}
+
+.avatarImage {
+  width: 400px;
+  height: 500px;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 0 0 200px 200px;
+  position: relative;
+  z-index: 1;
+  box-shadow: var(--shadow-gradient);
+  transition: all var(--transition-medium);
+}
+
+.avatarImage:hover {
+  transform: scale(1.02);
+  box-shadow: 0 25px 80px rgba(130, 41, 121, 0.4), 0 50px 100px rgba(80, 42, 140, 0.3);
+}
+/* Đường line ngang ở chân 7 đường dọc */
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.08);
+  pointer-events: none;
+  z-index: 0;
+}
