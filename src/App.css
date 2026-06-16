@@ -1,8 +1,9 @@
 .app {
-  background: 
-    #16111D;
-  background-size: 
-    100% 100%;    
-  color: #ffffff;
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  min-height: 100vh;
+  overflow-x: hidden;
+  background:
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px) 50% 0 / 12.5% 100%,
+    var(--color-canvas-ice);
+  color: var(--color-midnight-ink);
+  font-family: var(--font-suisseintl);
 }

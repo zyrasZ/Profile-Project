@@ -1,38 +1,110 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@200;300;400;500;600;700;800&display=swap');
-@import './styles/variables.css';
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Manrope:wght@400;500;600;700;800&family=Roboto+Mono:wght@400;500&display=swap");
+@import "./styles/variables.css";
 
 * {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  background: var(--color-canvas-ice);
 }
 
 :root {
-  font-family: 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #0a0a0a;
-
+  color: var(--color-midnight-ink);
+  background-color: var(--color-canvas-ice);
+  font-family: var(--font-suisseintl);
   font-synthesis: none;
+  font-weight: var(--font-weight-regular);
+  line-height: var(--leading-body);
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 body {
-  margin: 0;
   min-width: 320px;
   min-height: 100vh;
-  background-color: #0a0a0a;
-  color: #ffffff;
+  background:
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px) 50% 0 / 12.5% 100%,
+    var(--color-canvas-ice);
+  color: var(--color-midnight-ink);
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
 }
 
 #root {
-  width: 100%;
   min-height: 100vh;
+  width: 100%;
+}
+
+::selection {
+  background: var(--color-alert-yellow);
+  color: var(--color-midnight-ink);
+}
+
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity 640ms var(--ease-out-quint),
+    transform 640ms var(--ease-out-quint);
+  transition-delay: var(--reveal-delay, 0ms);
+  will-change: opacity, transform;
+}
+
+[data-reveal="scale"] {
+  transform: translateY(20px) scale(0.97);
+}
+
+[data-reveal].is-visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  will-change: auto;
+}
+
+@keyframes lineSweep {
+  from {
+    transform: scaleX(0);
+  }
+
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes gentleFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  [data-reveal] {
+    opacity: 1;
+    transform: none;
+  }
 }

@@ -1,168 +1,194 @@
 .projects {
-  padding: 80px 0;
-  background-color: var(--bg-transparent);
+  padding: var(--spacing-96) 0;
   position: relative;
 }
 
-/* 7 đường line dọc cho projects */
-.projects::before {
-  content: '';
-  position: absolute;
-  top: 0;
+.projects::after {
+  background: var(--color-midnight-ink);
+  content: "";
+  height: 1px;
   left: 0;
+  position: absolute;
   right: 0;
-  bottom: 0;
-  background: 
-    linear-gradient(90deg, transparent calc(12.5% - 0.5px), rgba(255, 255, 255, 0.08) 12.5%, rgba(255, 255, 255, 0.08) calc(12.5% + 0.5px), transparent calc(12.5% + 0.5px)),
-    linear-gradient(90deg, transparent calc(25% - 0.5px), rgba(255, 255, 255, 0.08) 25%, rgba(255, 255, 255, 0.08) calc(25% + 0.5px), transparent calc(25% + 0.5px)),
-    linear-gradient(90deg, transparent calc(37.5% - 0.5px), rgba(255, 255, 255, 0.08) 37.5%, rgba(255, 255, 255, 0.08) calc(37.5% + 0.5px), transparent calc(37.5% + 0.5px)),
-    linear-gradient(90deg, transparent calc(50% - 0.5px), rgba(255, 255, 255, 0.08) 50%, rgba(255, 255, 255, 0.08) calc(50% + 0.5px), transparent calc(50% + 0.5px)),
-    linear-gradient(90deg, transparent calc(62.5% - 0.5px), rgba(255, 255, 255, 0.08) 62.5%, rgba(255, 255, 255, 0.08) calc(62.5% + 0.5px), transparent calc(62.5% + 0.5px)),
-    linear-gradient(90deg, transparent calc(75% - 0.5px), rgba(255, 255, 255, 0.08) 75%, rgba(255, 255, 255, 0.08) calc(75% + 0.5px), transparent calc(75% + 0.5px)),
-    linear-gradient(90deg, transparent calc(87.5% - 0.5px), rgba(255, 255, 255, 0.08) 87.5%, rgba(255, 255, 255, 0.08) calc(87.5% + 0.5px), transparent calc(87.5% + 0.5px));
-  pointer-events: none;
-  z-index: 0;
+  top: 0;
+  transform-origin: left;
+  animation: lineSweep 680ms var(--ease-out-expo) both;
 }
 
 .projectsContainer {
-  max-width: 1200px;
   margin: 0 auto;
-  padding: 0 32px;
+  max-width: var(--page-max-width);
+  padding: 0 var(--spacing-24);
   position: relative;
-  z-index: 1;
+  width: 100%;
 }
 
 .projectsHeader {
-  text-align: center;
-  margin-bottom: 64px;
+  align-items: end;
+  display: grid;
+  gap: var(--spacing-24);
+  grid-template-columns: minmax(0, 0.9fr) minmax(260px, 0.45fr);
+  margin-bottom: var(--spacing-64);
 }
 
 .projectsTitle {
-  font-size: 40px;
-  font-weight: 700;
-  margin-bottom: 24px;
-  font-family: 'Bricolage Grotesque', sans-serif;
-  color: var(--text-primary);
+  color: var(--color-midnight-ink);
+  font-family: var(--font-suisseintlcond);
+  font-size: var(--text-display-sm);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: var(--tracking-display-sm);
+  line-height: var(--leading-display-sm);
+  text-transform: uppercase;
 }
 
 .projectsDescription {
-  font-size: 16px;
-  line-height: 1.6;
-  color: var(--text-secondary);
-  max-width: 600px;
-  margin: 0 auto;
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  color: var(--color-ash-gray);
+  font-family: var(--font-suisseintl);
+  font-size: var(--text-subheading);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--leading-subheading);
+  max-width: 32ch;
 }
 
 .projectsGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 32px;
+  gap: var(--spacing-24);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
 .projectCard {
-  background: var(--bg-transparent);
-  border: 2px solid transparent;
-  border-radius: 20px;
-  padding: 40px 32px;
-  text-align: center;
-  transition: all var(--transition-medium);
-  cursor: pointer;
-  text-decoration: none;
+  align-content: space-between;
+  background: var(--color-paper-white);
+  border: 1px solid var(--color-midnight-ink);
+  border-radius: var(--radius-cards);
+  color: var(--color-midnight-ink);
+  display: grid;
+  gap: var(--spacing-40);
+  min-height: 260px;
+  padding: var(--spacing-24);
   position: relative;
+  text-decoration: none;
+  transition:
+    background var(--transition-medium),
+    color var(--transition-medium),
+    transform var(--transition-medium),
+    border-radius var(--transition-medium);
+  will-change: transform;
 }
 
-.projectCard::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  border-radius: 20px;
-  padding: 2px;
-  background: var(--primary-gradient);
-  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  mask-composite: xor;
-  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
-  z-index: -1;
+.projectCard:nth-child(2) {
+  background: var(--color-midnight-ink);
+  color: var(--color-paper-white);
 }
 
-.projectCard:hover {
-  background: var(--primary-gradient);
-  border: 2px solid transparent;
+.projectCard:nth-child(3) {
+  background: var(--color-action-green);
+}
+
+.projectCard:hover,
+.projectCard:focus-visible {
+  background: var(--color-alert-yellow);
+  border-radius: 24px;
+  color: var(--color-midnight-ink);
+  outline: none;
   transform: translateY(-8px);
-  box-shadow: 0 15px 40px var(--shadow-primary);
 }
 
 .projectIcon {
-  margin-bottom: 24px;
+  align-items: center;
+  display: flex;
+  justify-content: flex-start;
 }
 
 .iconPlaceholder {
-  width: 60px;
-  height: 60px;
-  background: rgba(255, 255, 255, 0.1);
-  border: 2px solid transparent;
-  border-radius: 15px;
-  display: flex;
   align-items: center;
-  justify-content: center;
+  background: currentColor;
+  border-radius: var(--radius-lg);
+  color: inherit;
+  display: flex;
   font-size: 24px;
-  margin: 0 auto;
-  transition: all var(--transition-fast);
+  height: 64px;
+  justify-content: center;
   position: relative;
+  transition: background var(--transition-medium), transform var(--transition-medium);
+  width: 64px;
 }
 
-.iconPlaceholder::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  border-radius: 15px;
-  padding: 2px;
-  background: var(--primary-gradient);
-  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  mask-composite: xor;
-  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
-  z-index: -1;
+.iconPlaceholder svg {
+  color: var(--color-paper-white);
+  position: relative;
+  z-index: 1;
 }
 
-.projectCard:hover .iconPlaceholder {
-  background: rgba(255, 255, 255, 0.2);
-  transform: scale(1.1);
+.projectCard:nth-child(2) .iconPlaceholder {
+  background: var(--color-paper-white);
+}
+
+.projectCard:nth-child(2) .iconPlaceholder svg {
+  color: var(--color-midnight-ink);
+}
+
+.projectCard:hover .iconPlaceholder,
+.projectCard:focus-visible .iconPlaceholder {
+  background: var(--color-midnight-ink);
+  transform: rotate(-4deg) scale(1.06);
+}
+
+.projectCard:hover .iconPlaceholder svg,
+.projectCard:focus-visible .iconPlaceholder svg {
+  color: var(--color-paper-white);
 }
 
 .projectTitle {
-  font-size: 24px;
-  font-weight: 600;
-  color: var(--text-primary);
-  margin-bottom: 16px;
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  color: inherit;
+  font-family: var(--font-suisseintlcond);
+  font-size: clamp(32px, 3.4vw, 48px);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: 0;
+  line-height: 0.95;
+  max-width: 12ch;
+  text-transform: uppercase;
+}
+
+.projectContent {
+  display: grid;
+  gap: var(--spacing-16);
 }
 
 .projectDescription {
-  font-size: 15px;
-  line-height: 1.6;
-  color: var(--text-secondary);
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  transition: color var(--transition-fast);
+  color: inherit;
+  font-family: var(--font-suisseintl);
+  font-size: var(--text-body-sm);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--leading-body);
+  opacity: 0.78;
 }
 
-.projectCard:hover .projectDescription {
-  color: rgba(255, 255, 255, 0.9);
+.projectStack {
+  color: inherit;
+  font-family: var(--font-suisseintlmono);
+  font-size: var(--text-caption);
+  line-height: var(--leading-caption);
+  opacity: 0.72;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 900px) {
+  .projectsHeader,
   .projectsGrid {
     grid-template-columns: 1fr;
   }
 
-  .projectsTitle {
-    font-size: 32px;
+  .projectCard {
+    min-height: 220px;
+  }
+}
+
+@media (max-width: 560px) {
+  .projects {
+    padding: var(--spacing-80) 0;
+  }
+
+  .projectsContainer {
+    padding: 0 var(--spacing-16);
   }
 }

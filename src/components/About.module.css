@@ -1,133 +1,311 @@
-/* 
-CSS Modules: Class names sẽ được tự động tạo unique
-Ví dụ: .about → .About_about__abc123
-*/
-
 .about {
-  padding: 80px 0;
-  margin-top: 400px;
-  background-color: var(--bg-transparent);
+  padding: var(--spacing-96) 0;
   position: relative;
 }
 
-/* 7 đường line dọc cho about */
-.about::before {
-  content: '';
-  position: absolute;
-  top: 0;
+.about::after {
+  background: var(--color-midnight-ink);
+  content: "";
+  height: 1px;
   left: 0;
+  position: absolute;
   right: 0;
-  bottom: 0;
-  background: 
-    linear-gradient(90deg, transparent calc(12.5% - 0.5px), rgba(255, 255, 255, 0.08) 12.5%, rgba(255, 255, 255, 0.08) calc(12.5% + 0.5px), transparent calc(12.5% + 0.5px)),
-    linear-gradient(90deg, transparent calc(25% - 0.5px), rgba(255, 255, 255, 0.08) 25%, rgba(255, 255, 255, 0.08) calc(25% + 0.5px), transparent calc(25% + 0.5px)),
-    linear-gradient(90deg, transparent calc(37.5% - 0.5px), rgba(255, 255, 255, 0.08) 37.5%, rgba(255, 255, 255, 0.08) calc(37.5% + 0.5px), transparent calc(37.5% + 0.5px)),
-    linear-gradient(90deg, transparent calc(50% - 0.5px), rgba(255, 255, 255, 0.08) 50%, rgba(255, 255, 255, 0.08) calc(50% + 0.5px), transparent calc(50% + 0.5px)),
-    linear-gradient(90deg, transparent calc(62.5% - 0.5px), rgba(255, 255, 255, 0.08) 62.5%, rgba(255, 255, 255, 0.08) calc(62.5% + 0.5px), transparent calc(62.5% + 0.5px)),
-    linear-gradient(90deg, transparent calc(75% - 0.5px), rgba(255, 255, 255, 0.08) 75%, rgba(255, 255, 255, 0.08) calc(75% + 0.5px), transparent calc(75% + 0.5px)),
-    linear-gradient(90deg, transparent calc(87.5% - 0.5px), rgba(255, 255, 255, 0.08) 87.5%, rgba(255, 255, 255, 0.08) calc(87.5% + 0.5px), transparent calc(87.5% + 0.5px));
-  pointer-events: none;
-  z-index: 0;
+  top: 0;
+  transform-origin: left;
+  animation: lineSweep 680ms var(--ease-out-expo) both;
 }
 
 .aboutContainer {
-  max-width: 1200px;
   margin: 0 auto;
-  padding: 0 32px; /* 2rem = 32px */
+  max-width: var(--page-max-width);
+  padding: 0 var(--spacing-24);
   position: relative;
-  z-index: 1;
+  width: 100%;
 }
 
 .aboutContent {
+  align-items: start;
   display: grid;
-  grid-template-columns: 40% 60%;
-  gap: 64px; /* 4rem = 64px */
-  align-items: center;
+  gap: clamp(32px, 6vw, 80px);
+  grid-template-columns: minmax(280px, 0.78fr) minmax(0, 1.22fr);
+}
+
+.aboutMedia {
+  display: grid;
+  gap: var(--spacing-24);
+  position: sticky;
+  top: 118px;
+}
+
+.aboutImage {
+  background: var(--color-paper-white);
+  border: 1px solid var(--color-midnight-ink);
+  border-radius: var(--radius-cards);
+  padding: var(--spacing-16);
+  transition: transform var(--transition-medium), background var(--transition-medium);
 }
 
 .aboutAvatar {
-  width: 100%;
-  height: 400px;
+  aspect-ratio: 4 / 5;
+  border-radius: 24px;
+  height: auto;
   object-fit: cover;
   object-position: center;
-  border-radius: 15px;
+  transition: transform 520ms var(--ease-out-quint);
+  width: 100%;
+}
+
+.aboutImage:hover {
+  background: var(--color-faint-mist);
+  transform: translateY(-6px);
+}
+
+.aboutImage:hover .aboutAvatar {
+  transform: scale(1.025);
+}
+
+.quickPanel {
+  background: var(--color-action-green);
+  border: 1px solid var(--color-midnight-ink);
+  border-radius: var(--radius-cards);
+  padding: clamp(16px, 3vw, 28px);
+  transition: background var(--transition-medium), transform var(--transition-medium);
+}
+
+.quickPanel:hover {
+  background: var(--color-alert-yellow);
+  transform: translateY(-6px);
+}
+
+.quickTitle {
+  color: var(--color-midnight-ink);
+  font-family: var(--font-suisseintlmono);
+  font-size: var(--text-caption);
+  font-weight: 500;
+  line-height: var(--leading-caption);
+  margin-bottom: var(--spacing-24);
+  text-transform: uppercase;
+}
+
+.quickList {
+  display: grid;
+  gap: var(--spacing-16);
+}
+
+.quickItem {
+  border-top: 1px solid color-mix(in srgb, var(--color-midnight-ink) 20%, transparent);
+  display: grid;
+  gap: var(--spacing-8);
+  padding-top: var(--spacing-16);
+  transition: transform var(--transition-fast);
+}
+
+.quickItem:hover {
+  transform: translateX(6px);
+}
+
+.quickItem span {
+  color: var(--color-ash-gray);
+  font-family: var(--font-suisseintlmono);
+  font-size: var(--text-caption);
+  line-height: var(--leading-caption);
+  text-transform: uppercase;
+}
+
+.quickItem strong {
+  color: var(--color-midnight-ink);
+  font-family: var(--font-suisseintl);
+  font-size: var(--text-body);
+  font-weight: 800;
+  line-height: var(--leading-body);
+}
+
+.aboutText {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-40);
 }
 
 .aboutTitle {
-  font-size: 40px; /* 2.5rem = 40px */
-  font-weight: 700;
-  margin-bottom: 32px; /* 2rem = 32px */
-  font-family: 'Bricolage Grotesque', sans-serif;
-  color: var(--text-primary);
+  color: var(--color-midnight-ink);
+  font-family: var(--font-suisseintlcond);
+  font-size: var(--text-display-sm);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: var(--tracking-display-sm);
+  line-height: var(--leading-display-sm);
+  max-width: 9ch;
+  text-transform: uppercase;
 }
 
 .highlight {
-  color: var(--primary-color);
+  color: var(--color-midnight-ink);
+  display: inline;
 }
 
 .aboutDescription {
-  font-size: 16px; /* 1rem = 16px */
-  line-height: 1.6;
-  color: var(--text-secondary);
-  margin-bottom: 48px; /* 3rem = 48px */
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  color: var(--color-ash-gray);
+  font-family: var(--font-suisseintl);
+  font-size: clamp(16px, 1.7vw, 20px);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.48;
+  max-width: 68ch;
+}
+
+.biodata {
+  background: var(--color-paper-white);
+  border: 1px solid var(--color-midnight-ink);
+  border-radius: var(--radius-cards);
+  padding: clamp(16px, 3vw, 32px);
+  transition: background var(--transition-medium), transform var(--transition-medium);
+}
+
+.biodata:hover {
+  background: var(--color-faint-mist);
+  transform: translateY(-4px);
+}
+
+.skillsPanel {
+  background: var(--color-midnight-ink);
+  border: 1px solid var(--color-midnight-ink);
+  border-radius: var(--radius-cards);
+  color: var(--color-paper-white);
+  padding: clamp(16px, 3vw, 32px);
+  transition: transform var(--transition-medium);
+}
+
+.skillsPanel:hover {
+  transform: translateY(-4px);
 }
 
 .biodataTitle {
-  font-size: 24px; /* 1.5rem = 24px */
-  font-weight: 600;
-  color: var(--text-primary);
-  margin-bottom: 24px; /* 1.5rem = 24px */
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  color: var(--color-midnight-ink);
+  font-family: var(--font-suisseintlmono);
+  font-size: var(--text-caption);
+  font-weight: 500;
+  line-height: var(--leading-caption);
+  margin-bottom: var(--spacing-24);
+  text-transform: uppercase;
+}
+
+.skillsPanel .biodataTitle {
+  color: var(--color-paper-white);
 }
 
 .biodataList {
   display: flex;
   flex-direction: column;
-  gap: 16px; /* 1rem = 16px */
+  gap: var(--spacing-16);
 }
 
 .biodataItem {
+  align-items: baseline;
+  border-top: 1px solid color-mix(in srgb, var(--color-midnight-ink) 18%, transparent);
   display: grid;
-  grid-template-columns: 100px 20px 1fr;
-  gap: 8px; /* 0.5rem = 8px */
-  align-items: start;
+  gap: var(--spacing-8);
+  grid-template-columns: minmax(92px, 0.28fr) 16px minmax(0, 1fr);
+  padding-top: var(--spacing-16);
+  transition: transform var(--transition-fast);
 }
 
-.label {
-  color: var(--text-primary);
-  font-weight: 500;
-  font-family: 'Plus Jakarta Sans', sans-serif;
+.biodataItem:hover {
+  transform: translateX(6px);
 }
 
+.label,
 .colon {
-  color: var(--text-primary);
+  color: var(--color-midnight-ink);
+  font-family: var(--font-suisseintl);
+  font-size: var(--text-body-sm);
+  font-weight: 800;
+  line-height: var(--leading-body-sm);
 }
 
 .value {
-  color: var(--text-secondary);
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  color: var(--color-ash-gray);
+  font-family: var(--font-suisseintl);
+  font-size: var(--text-body);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--leading-body);
+  overflow-wrap: anywhere;
 }
 
-@media (max-width: 768px) {
+.skillGroups {
+  display: grid;
+  gap: var(--spacing-24);
+}
+
+.skillGroup {
+  border-top: 1px solid color-mix(in srgb, var(--color-paper-white) 18%, transparent);
+  display: grid;
+  gap: var(--spacing-16);
+  grid-template-columns: minmax(100px, 0.25fr) minmax(0, 1fr);
+  padding-top: var(--spacing-16);
+}
+
+.skillLabel {
+  color: var(--color-action-green);
+  font-family: var(--font-suisseintl);
+  font-size: var(--text-body-sm);
+  font-weight: 800;
+  line-height: var(--leading-body-sm);
+}
+
+.skillList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-8);
+}
+
+.skillTag {
+  border: 1px solid color-mix(in srgb, var(--color-paper-white) 34%, transparent);
+  border-radius: var(--radius-buttons);
+  color: var(--color-paper-white);
+  font-family: var(--font-suisseintl);
+  font-size: var(--text-body-sm);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--leading-body-sm);
+  padding: 7px 10px;
+  transition: background var(--transition-fast), color var(--transition-fast), transform var(--transition-fast);
+}
+
+.skillTag:hover {
+  background: var(--color-paper-white);
+  color: var(--color-midnight-ink);
+  transform: translateY(-2px);
+}
+
+@media (max-width: 860px) {
   .aboutContent {
     grid-template-columns: 1fr;
-    gap: 32px; /* 2rem = 32px */
   }
-  
-  .aboutTitle {
-    font-size: 32px; /* 2rem = 32px */
+
+  .aboutMedia {
+    position: static;
+  }
+
+  .aboutAvatar {
+    max-height: 520px;
   }
 }
-/* Đường line ngang ở điểm bắt đầu 7 đường dọc */
-.about::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 1px;
-  background: rgba(255, 255, 255, 0.08);
-  pointer-events: none;
-  z-index: 0;
+
+@media (max-width: 560px) {
+  .about {
+    padding: var(--spacing-80) 0;
+  }
+
+  .aboutContainer {
+    padding: 0 var(--spacing-16);
+  }
+
+  .biodataItem {
+    grid-template-columns: 1fr;
+  }
+
+  .skillGroup {
+    grid-template-columns: 1fr;
+  }
+
+  .colon {
+    display: none;
+  }
 }
