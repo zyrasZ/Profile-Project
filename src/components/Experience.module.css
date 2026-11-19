@@ -1,0 +1,432 @@
+.experience {
+  padding: var(--spacing-96) 0;
+  position: relative;
+}
+
+.experience::after {
+  background: var(--color-midnight-ink);
+  content: "";
+  height: 1px;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  transform-origin: left;
+  animation: lineSweep 680ms var(--ease-out-expo) both;
+}
+
+.experienceContainer {
+  margin: 0 auto;
+  max-width: var(--page-max-width);
+  padding: 0 var(--spacing-24);
+  position: relative;
+  width: 100%;
+}
+
+.experienceHeader {
+  align-items: end;
+  display: grid;
+  gap: var(--spacing-24);
+  grid-template-columns: minmax(0, 0.95fr) minmax(260px, 0.45fr);
+  margin-bottom: var(--spacing-64);
+}
+
+.headerLeft {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-16);
+}
+
+.subheading {
+  align-self: flex-start;
+  background: var(--color-alert-yellow);
+  border: 1px solid var(--color-midnight-ink);
+  border-radius: var(--radius-buttons);
+  color: var(--color-midnight-ink);
+  font-family: var(--font-suisseintlmono);
+  font-size: var(--text-caption);
+  font-weight: 500;
+  line-height: var(--leading-caption);
+  padding: 6px 12px;
+  text-transform: uppercase;
+}
+
+.experienceTitle {
+  color: var(--color-midnight-ink);
+  font-family: var(--font-suisseintlcond);
+  font-size: var(--text-display-sm);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: var(--tracking-display-sm);
+  line-height: var(--leading-display-sm);
+  text-transform: uppercase;
+}
+
+.experienceDescription {
+  color: var(--color-ash-gray);
+  font-family: var(--font-suisseintl);
+  font-size: var(--text-subheading);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--leading-subheading);
+  max-width: 36ch;
+}
+
+.experienceGrid {
+  display: grid;
+  gap: var(--spacing-24);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.card {
+  border: none;
+  border-radius: var(--radius-cards);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: clamp(20px, 2.5vw, 30px);
+  position: relative;
+  transition:
+    background var(--transition-medium),
+    color var(--transition-medium),
+    transform var(--transition-medium),
+    box-shadow var(--transition-medium);
+  will-change: transform;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 22px 44px -18px rgba(5, 5, 5, 0.16);
+}
+
+/* Light Theme Card (TMA Solutions) */
+.light {
+  background: var(--color-paper-white);
+  color: var(--color-midnight-ink);
+}
+
+.light:hover {
+  background: var(--color-faint-mist);
+}
+
+/* Dark Theme Card (ViralMinds) */
+.dark {
+  background: var(--color-midnight-ink);
+  color: var(--color-paper-white);
+}
+
+.dark:hover {
+  background: #111111;
+}
+
+/* Accent Theme Card (Animoca Brands) */
+.accent {
+  background: var(--color-action-green);
+  color: var(--color-midnight-ink);
+}
+
+.accent:hover {
+  background: var(--color-alert-yellow);
+}
+
+/* Card Header */
+.cardHeader {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-16);
+  margin-bottom: var(--spacing-20);
+}
+
+.companyMeta {
+  align-items: center;
+  display: flex;
+  gap: var(--spacing-20);
+  width: 100%;
+}
+
+.companyInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 0;
+}
+
+.brandBox {
+  align-items: center;
+  border: none;
+  border-radius: var(--radius-lg);
+  display: flex;
+  flex-shrink: 0;
+  font-family: var(--font-suisseintlcond);
+  font-size: 16px;
+  font-weight: 800;
+  height: 50px;
+  justify-content: center;
+  letter-spacing: 0.05em;
+  min-width: 60px;
+  overflow: hidden;
+  padding: 6px 10px;
+  transition: transform var(--transition-fast);
+}
+
+.light .brandBox {
+  background: transparent;
+  color: var(--color-midnight-ink);
+  padding: 2px 0;
+}
+
+.dark .brandBox {
+  background: var(--color-paper-white);
+  color: var(--color-midnight-ink);
+}
+
+.accent .brandBox {
+  background: #ffffff;
+  color: var(--color-midnight-ink);
+}
+
+.brandLogoImg {
+  display: block;
+  height: 100%;
+  max-width: 100%;
+  object-fit: contain;
+  width: auto;
+}
+
+.brandLogoZoom {
+  transform: scale(1.28);
+}
+
+.card:hover .brandBox {
+  transform: rotate(-4deg) scale(1.05);
+}
+
+.categoryBadge {
+  display: block;
+  font-family: var(--font-suisseintlmono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  opacity: 0.72;
+  text-transform: uppercase;
+}
+
+.companyName {
+  font-family: var(--font-suisseintlcond);
+  font-size: clamp(24px, 2.2vw, 28px);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: 0.02em;
+  line-height: 1.05;
+  text-transform: uppercase;
+}
+
+.eventTag {
+  display: block;
+  font-family: var(--font-suisseintl);
+  font-size: var(--text-caption);
+  font-weight: 600;
+  line-height: 1.3;
+  margin-top: 2px;
+  opacity: 0.8;
+}
+
+.periodBadge {
+  align-self: flex-start;
+  border: 1px solid currentColor;
+  border-radius: var(--radius-buttons);
+  font-family: var(--font-suisseintlmono);
+  font-size: 11px;
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+  line-height: 1;
+  padding: 6px 10px;
+  white-space: nowrap;
+}
+
+.roleWrapper {
+  margin-bottom: var(--spacing-16);
+}
+
+.roleTitle {
+  font-family: var(--font-suisseintl);
+  font-size: clamp(17px, 1.6vw, 19px);
+  font-weight: 800;
+  line-height: 1.25;
+}
+
+/* Core Responsibilities Block */
+.sectionBlock {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-8);
+  margin-bottom: var(--spacing-16);
+}
+
+.sectionHeading {
+  font-family: var(--font-suisseintlmono);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  opacity: 0.7;
+  text-transform: uppercase;
+}
+
+.bulletList {
+  display: grid;
+  gap: 8px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.bulletItem {
+  align-items: baseline;
+  display: flex;
+  font-family: var(--font-suisseintl);
+  font-size: 13px;
+  gap: 8px;
+  line-height: 1.45;
+  opacity: 0.88;
+}
+
+.bulletMarker {
+  color: currentColor;
+  font-weight: 800;
+  opacity: 0.6;
+}
+
+/* Key Result Callout Box */
+.resultBox {
+  border: 1px solid currentColor;
+  border-left-width: 4px;
+  border-radius: var(--radius-md);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: var(--spacing-20);
+  padding: var(--spacing-12);
+}
+
+.light .resultBox {
+  background: var(--color-faint-mist);
+  border-color: color-mix(in srgb, var(--color-midnight-ink) 25%, transparent);
+  border-left-color: var(--color-midnight-ink);
+}
+
+.dark .resultBox {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.18);
+  border-left-color: var(--color-alert-yellow);
+}
+
+.accent .resultBox {
+  background: rgba(5, 5, 5, 0.06);
+  border-color: color-mix(in srgb, var(--color-midnight-ink) 25%, transparent);
+  border-left-color: var(--color-midnight-ink);
+}
+
+.resultHeader {
+  align-items: center;
+  display: flex;
+  gap: 8px;
+}
+
+.resultIcon {
+  font-size: 12px;
+}
+
+.resultTag {
+  border: 1px solid currentColor;
+  border-radius: var(--radius-buttons);
+  font-family: var(--font-suisseintlmono);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  padding: 2px 6px;
+  text-transform: uppercase;
+}
+
+.light .resultTag,
+.accent .resultTag {
+  background: var(--color-alert-yellow);
+  color: var(--color-midnight-ink);
+}
+
+.dark .resultTag {
+  background: var(--color-alert-yellow);
+  color: var(--color-midnight-ink);
+}
+
+.resultMetric {
+  font-family: var(--font-suisseintl);
+  font-size: 13.5px;
+  font-weight: 800;
+  line-height: 1.3;
+}
+
+.resultDetail {
+  font-family: var(--font-suisseintl);
+  font-size: 12.5px;
+  line-height: 1.45;
+  opacity: 0.84;
+}
+
+/* Tech Stack Skills */
+.skillList {
+  border-top: 1px solid color-mix(in srgb, currentColor 18%, transparent);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: auto;
+  padding-top: var(--spacing-16);
+}
+
+.skillPill {
+  border: 1px solid color-mix(in srgb, currentColor 28%, transparent);
+  border-radius: var(--radius-buttons);
+  font-family: var(--font-suisseintl);
+  font-size: 11.5px;
+  font-weight: 600;
+  padding: 4px 8px;
+  transition:
+    background var(--transition-fast),
+    color var(--transition-fast),
+    transform var(--transition-fast);
+}
+
+.light .skillPill:hover,
+.accent .skillPill:hover {
+  background: var(--color-midnight-ink);
+  color: var(--color-paper-white);
+  transform: translateY(-2px);
+}
+
+.dark .skillPill:hover {
+  background: var(--color-paper-white);
+  color: var(--color-midnight-ink);
+  transform: translateY(-2px);
+}
+
+@media (max-width: 1080px) {
+  .experienceGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .experienceHeader {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 560px) {
+  .experience {
+    padding: var(--spacing-80) 0;
+  }
+
+  .experienceContainer {
+    padding: 0 var(--spacing-16);
+  }
+
+  .cardHeader {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

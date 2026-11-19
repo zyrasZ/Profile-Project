@@ -2,10 +2,10 @@
   position: fixed;
   inset: 0 0 auto;
   z-index: 1000;
-  animation: headerDrop 560ms var(--ease-out-quint) both;
   border-bottom: 1px solid var(--color-midnight-ink);
-  background: color-mix(in srgb, var(--color-canvas-ice) 94%, transparent);
+  background: color-mix(in srgb, var(--color-canvas-ice) 92%, transparent);
   backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
 }
 
 .navContainer {
@@ -14,33 +14,106 @@
   justify-content: space-between;
   margin: 0 auto;
   max-width: var(--page-max-width);
-  min-height: 82px;
+  min-height: 78px;
   padding: 0 var(--spacing-24);
   width: 100%;
 }
 
-.logo {
+.topRow {
   align-items: center;
   display: flex;
+  justify-content: space-between;
 }
 
-.logoImage {
-  border: 1px solid var(--color-midnight-ink);
-  border-radius: var(--radius-xl);
-  height: 52px;
-  object-fit: cover;
+.logo {
+  align-items: center;
+  display: inline-flex;
+  gap: var(--spacing-8);
+  text-decoration: none;
+  cursor: pointer;
+  padding: 4px 0;
   transition: transform var(--transition-fast);
-  width: 52px;
 }
 
-.logoImage:hover {
+.logo:hover {
   transform: translateY(-2px);
+}
+
+.wordmark {
+  align-items: baseline;
+  color: var(--color-midnight-ink);
+  display: inline-flex;
+  font-family: var(--font-suisseintlcond);
+  font-size: clamp(26px, 3.2vw, 32px);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: 0.05em;
+  line-height: 1;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.wordmarkDot {
+  background-color: var(--color-alert-yellow);
+  border: 1.5px solid var(--color-midnight-ink);
+  border-radius: 2px;
+  display: inline-block;
+  height: 8px;
+  margin-left: 5px;
+  transition: transform var(--transition-fast), background-color var(--transition-fast);
+  width: 8px;
+  vertical-align: baseline;
+}
+
+.logo:hover .wordmarkDot {
+  background-color: var(--color-action-green);
+  transform: scale(1.2) rotate(45deg);
+}
+
+.menuToggle {
+  align-items: center;
+  background: var(--color-paper-white);
+  border: 1px solid var(--color-midnight-ink);
+  border-radius: var(--radius-buttons);
+  cursor: pointer;
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  height: 40px;
+  justify-content: center;
+  padding: 8px;
+  transition: background var(--transition-fast), transform var(--transition-fast);
+  width: 40px;
+}
+
+.menuToggle:hover {
+  background: var(--color-alert-yellow);
+}
+
+.menuToggle:active {
+  transform: scale(0.96);
+}
+
+.menuBar {
+  background: var(--color-midnight-ink);
+  border-radius: 2px;
+  display: block;
+  height: 2px;
+  transition: transform 220ms var(--ease-out-quint);
+  width: 18px;
+}
+
+.menuBarTopOpen {
+  transform: translateY(3.5px) rotate(45deg);
+}
+
+.menuBarBottomOpen {
+  transform: translateY(-3.5px) rotate(-45deg);
 }
 
 .navigation {
   align-items: center;
   display: flex;
-  gap: clamp(12px, 3vw, 44px);
+  gap: clamp(14px, 3vw, 40px);
 }
 
 .navLink {
@@ -59,7 +132,7 @@
   background: var(--color-midnight-ink);
   bottom: 0;
   content: "";
-  height: 1px;
+  height: 2px;
   left: 0;
   position: absolute;
   transform: scaleX(0);
@@ -69,46 +142,76 @@
 }
 
 .navLink:hover,
-.navLink:focus-visible {
+.navLink:focus-visible,
+.navLinkActive {
   color: var(--color-midnight-ink);
+}
+
+.navLink:hover {
   transform: translateY(-2px);
 }
 
 .navLink:hover::after,
-.navLink:focus-visible::after {
+.navLink:focus-visible::after,
+.navLinkActive::after {
   transform: scaleX(1);
+}
+
+.scrollTrack {
+  bottom: -1px;
+  height: 3px;
+  left: 0;
+  pointer-events: none;
+  position: absolute;
+  right: 0;
+  overflow: hidden;
+}
+
+.scrollProgress {
+  background: var(--color-midnight-ink);
+  height: 100%;
+  transform: scaleX(0);
+  transform-origin: left center;
+  width: 100%;
+  will-change: transform;
 }
 
 @media (max-width: 760px) {
   .navContainer {
-    align-items: flex-start;
+    align-items: stretch;
     flex-direction: column;
-    gap: var(--spacing-16);
-    min-height: auto;
-    padding: var(--spacing-16) var(--spacing-16) var(--spacing-24);
+    gap: 0;
+    min-height: 68px;
+    padding: var(--spacing-12) var(--spacing-16);
   }
 
-  .navigation {
-    display: grid;
-    gap: var(--spacing-8) var(--spacing-24);
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+  .topRow {
     width: 100%;
   }
 
+  .menuToggle {
+    display: flex;
+  }
+
+  .navigation {
+    display: none;
+    gap: var(--spacing-8) var(--spacing-16);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    padding-top: var(--spacing-16);
+    width: 100%;
+  }
+
+  .navigationOpen {
+    display: grid;
+  }
+
   .navLink {
-    border-top: 1px solid color-mix(in srgb, var(--color-midnight-ink) 24%, transparent);
-    padding-top: var(--spacing-8);
-  }
-}
-
-@keyframes headerDrop {
-  from {
-    opacity: 0;
-    transform: translateY(-18px);
+    border-top: 1px solid color-mix(in srgb, var(--color-midnight-ink) 20%, transparent);
+    padding: var(--spacing-12) 0 var(--spacing-8);
   }
 
-  to {
-    opacity: 1;
-    transform: translateY(0);
+  .navLink::after {
+    bottom: auto;
+    top: -1px;
   }
 }

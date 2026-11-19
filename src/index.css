@@ -9,6 +9,7 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 84px;
   background: var(--color-canvas-ice);
 }
 
@@ -26,11 +27,22 @@ html {
 
 body {
   min-width: 320px;
-  min-height: 100vh;
+  min-height: 100dvh;
   background:
     linear-gradient(90deg, var(--grid-line) 1px, transparent 1px) 50% 0 / 12.5% 100%,
     var(--color-canvas-ice);
   color: var(--color-midnight-ink);
+}
+
+h1,
+h2,
+h3,
+h4 {
+  text-wrap: balance;
+}
+
+p {
+  text-wrap: pretty;
 }
 
 img {
@@ -42,34 +54,19 @@ a {
   color: inherit;
 }
 
+:focus-visible {
+  outline: 2px solid var(--color-midnight-ink);
+  outline-offset: 3px;
+}
+
 #root {
-  min-height: 100vh;
+  min-height: 100dvh;
   width: 100%;
 }
 
 ::selection {
   background: var(--color-alert-yellow);
   color: var(--color-midnight-ink);
-}
-
-[data-reveal] {
-  opacity: 0;
-  transform: translateY(28px);
-  transition:
-    opacity 640ms var(--ease-out-quint),
-    transform 640ms var(--ease-out-quint);
-  transition-delay: var(--reveal-delay, 0ms);
-  will-change: opacity, transform;
-}
-
-[data-reveal="scale"] {
-  transform: translateY(20px) scale(0.97);
-}
-
-[data-reveal].is-visible {
-  opacity: 1;
-  transform: translateY(0) scale(1);
-  will-change: auto;
 }
 
 @keyframes lineSweep {
@@ -101,10 +98,5 @@ a {
     animation-iteration-count: 1 !important;
     scroll-behavior: auto !important;
     transition-duration: 0.01ms !important;
-  }
-
-  [data-reveal] {
-    opacity: 1;
-    transform: none;
   }
 }

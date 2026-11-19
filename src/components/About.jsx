@@ -3,16 +3,33 @@ import avatar1 from '../assets/images/avatar1.jpg';
 
 const skillGroups = [
   {
-    label: 'Frontend',
-    items: ['React', 'Next.js', 'Tailwind CSS', 'JavaScript', 'TypeScript'],
+    label: 'Frontend & State',
+    items: [
+      'React',
+      'TypeScript',
+      'Next.js',
+      'JavaScript',
+      'Tailwind CSS',
+      'Redux Toolkit',
+      'TanStack Query',
+      'React Hook Form',
+      'Zod',
+    ],
   },
   {
-    label: 'Backend',
-    items: ['Node.js', 'Express', 'NestJS', 'Spring Boot'],
+    label: 'Backend & Data',
+    items: ['Node.js', 'Express', 'NestJS', 'Spring Boot', 'MySQL', 'Supabase'],
   },
   {
-    label: 'Data & Tools',
-    items: ['MySQL', 'Supabase', 'Git', 'Postman', 'Vercel'],
+    label: 'Tools & Workflow',
+    items: [
+      'Git',
+      'Figma',
+      'Jira',
+      'Postman',
+      'Vercel',
+      'AI-Assisted Testing',
+    ],
   },
 ];
 
@@ -22,15 +39,15 @@ function About() {
       <div className={styles.aboutContainer}>
         <div className={styles.aboutContent}>
           <div className={styles.aboutMedia}>
-            <div className={styles.aboutImage} data-reveal="scale">
-              <img src={avatar1} alt="Avatar" className={styles.aboutAvatar} />
+            <div className={styles.aboutImage} data-gsap-card>
+              <img
+                src={avatar1}
+                alt="Nguyen Le Thai Phat portrait"
+                className={styles.aboutAvatar}
+              />
             </div>
-            <div
-              className={styles.quickPanel}
-              data-reveal
-              style={{ '--reveal-delay': '120ms' }}
-            >
-              <h3 className={styles.quickTitle}>Current Focus</h3>
+            <div className={styles.quickPanel} data-gsap-card>
+              <h3 className={styles.quickTitle}>Education &amp; Certs</h3>
               <div className={styles.quickList}>
                 <div className={styles.quickItem}>
                   <span>2023 - Present</span>
@@ -40,36 +57,17 @@ function About() {
                   <span>April 2026</span>
                   <strong>Claude 101 Certificate by Anthropic</strong>
                 </div>
-                <div className={styles.quickItem}>
-                  <span>Portfolio</span>
-                  <strong>
-                    Frontend systems, UI implementation, and client-side logic
-                  </strong>
-                </div>
               </div>
             </div>
           </div>
           <div className={styles.aboutText}>
-            <h2 className={styles.aboutTitle} data-reveal>
-              Personal <span className={styles.highlight}>Information</span>
+            <h2 className={styles.aboutTitle} data-gsap-heading>
+              About <span className={styles.highlight}>Me</span>
             </h2>
-            <p
-              className={styles.aboutDescription}
-              data-reveal
-              style={{ '--reveal-delay': '90ms' }}
-            >
-              Dedicated Front-end Developer Intern with a solid foundation in
-              modern web technologies and a practical approach to UI/UX
-              implementation. I focus on using HTML, CSS, JavaScript, and React
-              to build responsive, user-centric interfaces with clean code and
-              reliable performance. I am currently studying Information
-              Technology at the University of Transport HCM City.
+            <p className={styles.aboutDescription} data-gsap-heading>
+              Front-end Developer focused on React, TypeScript, modern state management (Redux Toolkit, TanStack Query), and AI-integrated web interfaces. Currently studying Information Technology at UTH.
             </p>
-            <div
-              className={styles.biodata}
-              data-reveal
-              style={{ '--reveal-delay': '160ms' }}
-            >
+            <div className={styles.biodata} data-gsap-card>
               <h3 className={styles.biodataTitle}>Profile</h3>
               <div className={styles.biodataList}>
                 <div className={styles.biodataItem}>
@@ -97,29 +95,32 @@ function About() {
                 <div className={styles.biodataItem}>
                   <span className={styles.label}>Phone</span>
                   <span className={styles.colon}>:</span>
-                  <span className={styles.value}>0565356513</span>
+                  <a href="tel:0565356513" className={`${styles.value} ${styles.contactLink}`}>
+                    0565356513
+                  </a>
                 </div>
                 <div className={styles.biodataItem}>
                   <span className={styles.label}>Email</span>
                   <span className={styles.colon}>:</span>
-                  <span className={styles.value}>thaiphat5b@gmail.com</span>
+                  <a
+                    href="mailto:thaiphat5b@gmail.com"
+                    className={`${styles.value} ${styles.contactLink}`}
+                  >
+                    thaiphat5b@gmail.com
+                  </a>
                 </div>
               </div>
             </div>
 
-            <div
-              className={styles.skillsPanel}
-              data-reveal
-              style={{ '--reveal-delay': '220ms' }}
-            >
-              <h3 className={styles.biodataTitle}>Skills</h3>
+            <div className={styles.skillsPanel} data-gsap-card data-gsap-skills-container>
+              <h3 className={styles.biodataTitle}>Technical Skills</h3>
               <div className={styles.skillGroups}>
-                {skillGroups.map(group => (
+                {skillGroups.map((group) => (
                   <div className={styles.skillGroup} key={group.label}>
                     <p className={styles.skillLabel}>{group.label}</p>
                     <div className={styles.skillList}>
-                      {group.items.map(item => (
-                        <span className={styles.skillTag} key={item}>
+                      {group.items.map((item) => (
+                        <span className={styles.skillTag} key={item} data-gsap-skill>
                           {item}
                         </span>
                       ))}
