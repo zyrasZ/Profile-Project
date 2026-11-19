@@ -6,9 +6,9 @@ import {
   faBullseye,
 } from '@fortawesome/free-solid-svg-icons';
 
-import tmaLogo from '../assets/icons/tma.png';
+import tmaLogo from '../assets/icons/TMA.png';
 import viralmindsLogo from '../assets/icons/ViralMind.svg';
-import animocaLogo from '../assets/icons/animoca.png';
+import animocaLogo from '../assets/icons/Animoca.png';
 
 const experiences = [
   {
